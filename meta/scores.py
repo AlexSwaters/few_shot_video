@@ -59,15 +59,31 @@ def compute_all_pairs_weight(z_support, z_query, t):
 
 
 def compute_otam_scores(
-        nway, 
-        n_query, 
-        n_support, 
-        logits, 
-        t, 
-        sq, 
+        nway:int, 
+        n_query:int, 
+        n_support:int, 
+        logits:torch.Tensor, 
+        t:int, 
+        sq:int, 
         use_shuffle=False,
         all_pairs_weight=0
     ):
+    """
+    Compute the OTAM scores for the given logits.
+
+    Args:
+        nway (int): number of support classes
+        n_query (int): the number of queries
+        n_support (int): the number of support examples per class
+        logits (torch.Tensor): the logits
+        t (int): the number of segments (or the length of the series of embeddings)
+        sq (int): support + query
+        use_shuffle (bool, optional): Whether to use shuffle augmentation. Defaults to False.
+        all_pairs_weight (int, optional): Contribution of all pairs weight to loss. Defaults to 0.
+
+    Returns:
+        torch.Tensor: the scores
+    """
     logits = logits.reshape(nway, sq, t, logits.shape[-1])  # 5x2x8x2048
     if (use_shuffle):
         logits = shuffle_order(logits)
@@ -98,7 +114,21 @@ def compute_otam_scores(
     return scores.reshape(nway * n_query, nway, n_support).mean(2)  # 5x5
 
 
-def compute_proto_scores(logits, nway, sq, t, n_support, n_query):
+def compute_proto_scores(logits:torch.tensor, nway:int, sq:int, t:int, n_support:int, n_query:int):
+    """
+    Compute the proto scores for the given logits.
+
+    Args:
+        logits (torch.tensor): the logits produced by the model
+        nway (int): the number of support classes
+        sq (int): support + query
+        t (int): the number of segments (or the length of the series of embeddings)
+        n_support (int): the number of support examples per class
+        n_query (int): the number of queries
+
+    Returns:
+        torch.tensor: the scores
+    """
     logits = logits.reshape(nway, sq, t, -1)  # 5 x 2 x 8 x 2048
     logits = logits.mean(2)  # average
 
@@ -111,9 +141,18 @@ def compute_proto_scores(logits, nway, sq, t, n_support, n_query):
     return -dists
 
 
-def euclidean_dist(x, y, normalize=False):
-    # x: N x D
-    # y: M x D
+def euclidean_dist(x:torch.Tensor, y:torch.Tensor, normalize:bool=False):
+    """
+    Compute the euclidean distance between two tensors.
+
+    Args:
+        x (torch.Tensor): the first tensor
+        y (torch.Tensor): the second tensor
+        normalize (bool, optional): Whether to normalize the tensors. Defaults to False.
+
+    Returns:
+        torch.Tensor: the distance
+    """
     if normalize:
         x = F.normalize(x, p=2, dim=-1)
         y = F.normalize(y, p=2, dim=-1)
@@ -128,40 +167,50 @@ def euclidean_dist(x, y, normalize=False):
     return torch.pow(x - y, 2).sum(2)
 
 
-def dtw(x, y):
+def dtw(x: np.ndarray, y: np.ndarray):
+    """
+    Compute the dynamic time warping distance between two sequences.
+
+    Args:
+        x (np.array): the first sequence
+        y (np.array): the second sequence
+
+    Returns:
+        float: the distance
+        tuple: the path
+    """
     r, c = len(x), len(y)
-    assert r == c
     r = r + 2
     D0 = np.zeros((r + 1, c + 1))
     D0[0, 1:] = np.inf
     D0[1:, 0] = np.inf
     D1 = D0[1:, 1:]  # view
-
-    # for i in range(1,r-1): # non zero
-    # for j in range(c):
-    # D1[i, j] = dist(x[i-1], y[j])
-
-    n = x.shape[0]
-    m = y.shape[0]
-    d = x.shape[1]
-    assert n == m
-    assert d == y.shape[1]
-
     D1[1:r - 1, 0:c] = cdist(x, y, 'cosine')
     D0, D1 = dtw_loop(r, c, D0, D1)
-
     if len(x) == 1:
         path = np.zeros(len(y)), range(len(y))
     elif len(y) == 1:
         path = range(len(x)), np.zeros(len(x))
     else:
         path = _traceback(D0)
-    # return D1[-1, -1], C, D1, path
     return D1[-1, -1], path
 
 
 @jit(nopython=True)
 def dtw_loop(r, c, D0, D1):
+    """
+    Auxiliary function for the dynamic time warping distance.
+
+    Args:
+        r (int): rows (the length of the first sequence)
+        c (int): columns (the length of the second sequence)
+        D0 (np.array): the first distance matrix
+        D1 (np.array): the second distance matrix
+
+    Returns:
+        np.array: the first distance matrix
+        np.array: the second distance matrix
+    """
     for i in range(r):  # [0,T+1]
         for j in range(c):  # [0,T-1]
             i_k = min(i + 1, r)
@@ -175,6 +224,15 @@ def dtw_loop(r, c, D0, D1):
 
 
 def _traceback(D):
+    """
+    Traceback the path.
+
+    Args:
+        D (np.array): the distance matrix
+
+    Returns:
+        tuple: the path
+    """
     i, j = np.array(D.shape) - 2
     p, q = [i], [j]
     while (i > 0) or (j > 0):

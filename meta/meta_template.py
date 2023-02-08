@@ -16,6 +16,15 @@ class BaseNet(nn.Module):
         self.feat_dim = self.feature.final_feat_dim
 
     def forward(self, x):
+        """
+        Forward pass of the network
+
+        Args:
+            x (torch.Tensor): The input to the network
+
+        Returns:
+            torch.Tensor: The output of the network
+        """
         return self.feature.forward(x)
 
     def parse_feature(self, x, is_feature):
@@ -45,6 +54,16 @@ class BaseNet(nn.Module):
         return z_support, z_query
 
     def correct(self, x):
+        """
+        Compute the number of correct predictions
+
+        Args:
+            x (torch.Tensor): The scores produced by the network
+
+        Returns:
+            float: The number of correct predictions
+            int: The number of predictions
+        """
         scores = self.set_forward(x)
         y_query = np.repeat(range(self.n_way), self.n_query)
         _, topk_labels = scores.data.topk(1, 1, True, True)

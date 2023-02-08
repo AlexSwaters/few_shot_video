@@ -4,7 +4,18 @@ import torch.nn as nn
 import torchvision.models as models
 
 
-def get_model(name: str = 'resnet50', pretrained: bool = True, partial_freeze=False):
+def get_model(name: str = 'resnet50', pretrained: bool = True, partial_freeze=False) -> nn.Module:
+    """
+    Get the model based on parameters.
+
+    Args:
+        name (str, optional): name of the model. Defaults to 'resnet50'.
+        pretrained (bool, optional): whether to use pretrained model. Defaults to True.
+        partial_freeze (bool, optional): whether to freeze the first few layers. Defaults to False.
+
+    Returns:
+        nn.Module: the model
+    """
     new_model = None
     if name == 'ResNet50':
         new_model = models.resnet50(pretrained=pretrained)
@@ -21,7 +32,16 @@ def get_model(name: str = 'resnet50', pretrained: bool = True, partial_freeze=Fa
     return new_model
 
 
-def parse_args(script):
+def parse_args(script) -> argparse.Namespace:
+    """
+    Parse arguments for the script.
+
+    Args:
+        script (str): name of the script
+
+    Returns:
+        argparse.Namespace: the arguments
+    """
     parser = argparse.ArgumentParser(description='few-shot script %s' % (script))
     parser.add_argument('--dataset', default='somethingotam')
     parser.add_argument('--model', default='ResNet50')

@@ -15,13 +15,13 @@ IMAGE_SIZE = 224
 
 
 def get_embedding(
-        embedder,
-        x,
-        y_cuda=True,
-        method='otam',
-        temporal_shuffle=False,
-        all_pairs_weight=0
-):
+        embedder: nn.Module,
+        x: torch.Tensor,
+        y_cuda:bool = True,
+        method: str = 'otam',
+        temporal_shuffle: bool =False,
+        all_pairs_weight:float=0
+    ):
     """
     Compute the embedding of the input data
     Args:
@@ -71,7 +71,8 @@ def get_embedding(
     return scores, np.repeat(range(nway), num_query)
 
 
-def test_performance(test_model, parameters, loader, epoch, max_acc=0, is_val=True):
+def test_performance(
+    test_model, parameters, loader, epoch, max_acc=0, is_val=True):
     """
     Test the performance of the model
     Args:
