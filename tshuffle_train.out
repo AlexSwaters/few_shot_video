@@ -1,0 +1,455 @@
+Calling meta.py
+lr= 1e-05
+Epoch 0 | Loss 1.538656 | 100 Val Acc = 32.20% +- 3.80%
+best model! save...
+Epoch 1 | Loss 1.554088 | 
+Epoch 2 | Loss 1.531347 | 
+Epoch 3 | Loss 1.514846 | 
+Epoch 4 | Loss 1.502038 | 
+Epoch 5 | Loss 1.506092 | 
+Epoch 6 | Loss 1.456941 | 
+Epoch 7 | Loss 1.502305 | 
+Epoch 8 | Loss 1.475736 | 
+Epoch 9 | Loss 1.449947 | 
+Epoch 10 | Loss 1.481615 | 100 Val Acc = 35.60% +- 3.78%
+best model! save...
+Epoch 11 | Loss 1.450538 | 
+Epoch 12 | Loss 1.409914 | 
+Epoch 13 | Loss 1.443423 | 
+Epoch 14 | Loss 1.478168 | 
+Epoch 15 | Loss 1.435296 | 
+Epoch 16 | Loss 1.433396 | 
+Epoch 17 | Loss 1.417788 | 
+Epoch 18 | Loss 1.457547 | 
+Epoch 19 | Loss 1.403213 | 
+Epoch 20 | Loss 1.449552 | 100 Val Acc = 32.80% +- 3.94%
+Epoch 21 | Loss 1.415801 | 
+Epoch 22 | Loss 1.424172 | 
+Epoch 23 | Loss 1.367489 | 
+Epoch 24 | Loss 1.388657 | 
+Epoch 25 | Loss 1.390954 | 
+Epoch 26 | Loss 1.414577 | 
+Epoch 27 | Loss 1.348736 | 
+Epoch 28 | Loss 1.376665 | 
+Epoch 29 | Loss 1.406943 | 
+Epoch 30 | Loss 1.386434 | 100 Val Acc = 38.80% +- 3.99%
+best model! save...
+Epoch 31 | Loss 1.391382 | 
+Epoch 32 | Loss 1.377716 | 
+Epoch 33 | Loss 1.398012 | 
+Epoch 34 | Loss 1.368710 | 
+Epoch 35 | Loss 1.412056 | 
+Epoch 36 | Loss 1.347770 | 
+Epoch 37 | Loss 1.360009 | 
+Epoch 38 | Loss 1.389315 | 
+Epoch 39 | Loss 1.397719 | 
+Epoch 40 | Loss 1.360528 | 100 Val Acc = 33.40% +- 3.88%
+Epoch 41 | Loss 1.347634 | 
+Epoch 42 | Loss 1.345317 | 
+Epoch 43 | Loss 1.302542 | 
+Epoch 44 | Loss 1.384584 | 
+Epoch 45 | Loss 1.363717 | 
+Epoch 46 | Loss 1.333245 | 
+Epoch 47 | Loss 1.357614 | 
+Epoch 48 | Loss 1.386790 | 
+Epoch 49 | Loss 1.319671 | 
+Epoch 50 | Loss 1.292908 | 100 Val Acc = 38.80% +- 4.03%
+Epoch 51 | Loss 1.341340 | 
+Epoch 52 | Loss 1.353513 | 
+Epoch 53 | Loss 1.317351 | 
+Epoch 54 | Loss 1.324707 | 
+Epoch 55 | Loss 1.348042 | 
+Epoch 56 | Loss 1.305267 | 
+Epoch 57 | Loss 1.354453 | 
+Epoch 58 | Loss 1.310820 | 
+Epoch 59 | Loss 1.383642 | 
+Epoch 60 | Loss 1.332762 | 100 Val Acc = 41.60% +- 4.39%
+best model! save...
+Epoch 61 | Loss 1.373347 | 
+Epoch 62 | Loss 1.386845 | 
+Epoch 63 | Loss 1.332546 | 
+Epoch 64 | Loss 1.327352 | 
+Epoch 65 | Loss 1.298344 | 
+Epoch 66 | Loss 1.331063 | 
+Epoch 67 | Loss 1.314709 | 
+Epoch 68 | Loss 1.298831 | 
+Epoch 69 | Loss 1.284838 | 
+Epoch 70 | Loss 1.285715 | 100 Val Acc = 39.20% +- 4.11%
+Epoch 71 | Loss 1.342122 | 
+Epoch 72 | Loss 1.402924 | 
+Epoch 73 | Loss 1.303015 | 
+Epoch 74 | Loss 1.305384 | 
+Epoch 75 | Loss 1.296238 | 
+Epoch 76 | Loss 1.284713 | 
+Epoch 77 | Loss 1.271569 | 
+Epoch 78 | Loss 1.259964 | 
+Epoch 79 | Loss 1.337840 | 
+Epoch 80 | Loss 1.297724 | 100 Val Acc = 39.40% +- 4.24%
+Epoch 81 | Loss 1.331484 | 
+Epoch 82 | Loss 1.260521 | 
+Epoch 83 | Loss 1.336975 | 
+Epoch 84 | Loss 1.279605 | 
+Epoch 85 | Loss 1.331660 | 
+Epoch 86 | Loss 1.261098 | 
+Epoch 87 | Loss 1.261748 | 
+Epoch 88 | Loss 1.277600 | 
+Epoch 89 | Loss 1.301683 | 
+Epoch 90 | Loss 1.263108 | 100 Val Acc = 41.60% +- 4.02%
+Epoch 91 | Loss 1.313303 | 
+Epoch 92 | Loss 1.268502 | 
+Epoch 93 | Loss 1.343282 | 
+Epoch 94 | Loss 1.286702 | 
+Epoch 95 | Loss 1.289735 | 
+Epoch 96 | Loss 1.234844 | 
+Epoch 97 | Loss 1.240549 | 
+Epoch 98 | Loss 1.286735 | 
+Epoch 99 | Loss 1.251495 | 
+Epoch 100 | Loss 1.314953 | 100 Val Acc = 42.00% +- 4.62%
+best model! save...
+Epoch 101 | Loss 1.287372 | 
+Epoch 102 | Loss 1.245676 | 
+Epoch 103 | Loss 1.253241 | 
+Epoch 104 | Loss 1.304302 | 
+Epoch 105 | Loss 1.197579 | 
+Epoch 106 | Loss 1.237288 | 
+Epoch 107 | Loss 1.258204 | 
+Epoch 108 | Loss 1.293715 | 
+Epoch 109 | Loss 1.262103 | 
+Epoch 110 | Loss 1.253106 | 100 Val Acc = 40.60% +- 3.74%
+Epoch 111 | Loss 1.254097 | 
+Epoch 112 | Loss 1.285751 | 
+Epoch 113 | Loss 1.268371 | 
+Epoch 114 | Loss 1.298319 | 
+Epoch 115 | Loss 1.280607 | 
+Epoch 116 | Loss 1.234097 | 
+Epoch 117 | Loss 1.273036 | 
+Epoch 118 | Loss 1.265262 | 
+Epoch 119 | Loss 1.251129 | 
+Epoch 120 | Loss 1.265738 | 100 Val Acc = 39.60% +- 4.11%
+Epoch 121 | Loss 1.222391 | 
+Epoch 122 | Loss 1.239697 | 
+Epoch 123 | Loss 1.253477 | 
+Epoch 124 | Loss 1.250173 | 
+Epoch 125 | Loss 1.257478 | 
+Epoch 126 | Loss 1.209038 | 
+Epoch 127 | Loss 1.213841 | 
+Epoch 128 | Loss 1.276860 | 
+Epoch 129 | Loss 1.219113 | 
+Epoch 130 | Loss 1.223985 | 100 Val Acc = 41.20% +- 4.32%
+Epoch 131 | Loss 1.262986 | 
+Epoch 132 | Loss 1.233681 | 
+Epoch 133 | Loss 1.223862 | 
+Epoch 134 | Loss 1.240606 | 
+Epoch 135 | Loss 1.217339 | 
+Epoch 136 | Loss 1.220154 | 
+Epoch 137 | Loss 1.198947 | 
+Epoch 138 | Loss 1.248372 | 
+Epoch 139 | Loss 1.255156 | 
+Epoch 140 | Loss 1.210776 | 100 Val Acc = 43.60% +- 4.20%
+best model! save...
+Epoch 141 | Loss 1.237071 | 
+Epoch 142 | Loss 1.257223 | 
+Epoch 143 | Loss 1.225624 | 
+Epoch 144 | Loss 1.278518 | 
+Epoch 145 | Loss 1.256381 | 
+Epoch 146 | Loss 1.258433 | 
+Epoch 147 | Loss 1.213119 | 
+Epoch 148 | Loss 1.258861 | 
+Epoch 149 | Loss 1.224118 | 
+Epoch 150 | Loss 1.204570 | 100 Val Acc = 41.20% +- 3.95%
+Epoch 151 | Loss 1.207251 | 
+Epoch 152 | Loss 1.217998 | 
+Epoch 153 | Loss 1.223098 | 
+Epoch 154 | Loss 1.241392 | 
+Epoch 155 | Loss 1.211502 | 
+Epoch 156 | Loss 1.247655 | 
+Epoch 157 | Loss 1.252985 | 
+Epoch 158 | Loss 1.219381 | 
+Epoch 159 | Loss 1.222539 | 
+Epoch 160 | Loss 1.187021 | 100 Val Acc = 44.20% +- 3.73%
+best model! save...
+Epoch 161 | Loss 1.217530 | 
+Epoch 162 | Loss 1.158131 | 
+Epoch 163 | Loss 1.217528 | 
+Epoch 164 | Loss 1.257739 | 
+Epoch 165 | Loss 1.225451 | 
+Epoch 166 | Loss 1.238296 | 
+Epoch 167 | Loss 1.252031 | 
+Epoch 168 | Loss 1.218426 | 
+Epoch 169 | Loss 1.286361 | 
+Epoch 170 | Loss 1.223669 | 100 Val Acc = 44.20% +- 4.45%
+Epoch 171 | Loss 1.209159 | 
+Epoch 172 | Loss 1.211483 | 
+Epoch 173 | Loss 1.213612 | 
+Epoch 174 | Loss 1.220030 | 
+Epoch 175 | Loss 1.184626 | 
+Epoch 176 | Loss 1.234555 | 
+Epoch 177 | Loss 1.178747 | 
+Epoch 178 | Loss 1.283064 | 
+Epoch 179 | Loss 1.192724 | 
+Epoch 180 | Loss 1.169405 | 100 Val Acc = 44.40% +- 4.39%
+best model! save...
+Epoch 181 | Loss 1.201764 | 
+Epoch 182 | Loss 1.239236 | 
+Epoch 183 | Loss 1.145475 | 
+Epoch 184 | Loss 1.187879 | 
+Epoch 185 | Loss 1.216059 | 
+Epoch 186 | Loss 1.198984 | 
+Epoch 187 | Loss 1.180634 | 
+Epoch 188 | Loss 1.192102 | 
+Epoch 189 | Loss 1.168184 | 
+Epoch 190 | Loss 1.171781 | 100 Val Acc = 45.80% +- 3.93%
+best model! save...
+Epoch 191 | Loss 1.148557 | 
+Epoch 192 | Loss 1.130621 | 
+Epoch 193 | Loss 1.243759 | 
+Epoch 194 | Loss 1.144017 | 
+Epoch 195 | Loss 1.165843 | 
+Epoch 196 | Loss 1.189754 | 
+Epoch 197 | Loss 1.173778 | 
+Epoch 198 | Loss 1.222191 | 
+Epoch 199 | Loss 1.229432 | 
+Epoch 200 | Loss 1.224995 | 100 Val Acc = 44.00% +- 4.19%
+Epoch 201 | Loss 1.203007 | 
+Epoch 202 | Loss 1.204605 | 
+Epoch 203 | Loss 1.258813 | 
+Epoch 204 | Loss 1.192842 | 
+Epoch 205 | Loss 1.171845 | 
+Epoch 206 | Loss 1.211269 | 
+Epoch 207 | Loss 1.201951 | 
+Epoch 208 | Loss 1.165110 | 
+Epoch 209 | Loss 1.156932 | 
+Epoch 210 | Loss 1.196698 | 100 Val Acc = 42.40% +- 4.37%
+Epoch 211 | Loss 1.201913 | 
+Epoch 212 | Loss 1.141707 | 
+Epoch 213 | Loss 1.183716 | 
+Epoch 214 | Loss 1.191839 | 
+Epoch 215 | Loss 1.149423 | 
+Epoch 216 | Loss 1.210081 | 
+Epoch 217 | Loss 1.267992 | 
+Epoch 218 | Loss 1.098562 | 
+Epoch 219 | Loss 1.184149 | 
+Epoch 220 | Loss 1.188430 | 100 Val Acc = 42.00% +- 4.28%
+Epoch 221 | Loss 1.198910 | 
+Epoch 222 | Loss 1.151006 | 
+Epoch 223 | Loss 1.183170 | 
+Epoch 224 | Loss 1.165580 | 
+Epoch 225 | Loss 1.211345 | 
+Epoch 226 | Loss 1.222644 | 
+Epoch 227 | Loss 1.149086 | 
+Epoch 228 | Loss 1.159899 | 
+Epoch 229 | Loss 1.154539 | 
+Epoch 230 | Loss 1.205632 | 100 Val Acc = 43.20% +- 3.87%
+Epoch 231 | Loss 1.118714 | 
+Epoch 232 | Loss 1.158030 | 
+Epoch 233 | Loss 1.124538 | 
+Epoch 234 | Loss 1.147057 | 
+Epoch 235 | Loss 1.197519 | 
+Epoch 236 | Loss 1.149222 | 
+Epoch 237 | Loss 1.162086 | 
+Epoch 238 | Loss 1.150450 | 
+Epoch 239 | Loss 1.125608 | 
+Epoch 240 | Loss 1.194929 | 100 Val Acc = 42.00% +- 4.52%
+Epoch 241 | Loss 1.117812 | 
+Epoch 242 | Loss 1.131152 | 
+Epoch 243 | Loss 1.117584 | 
+Epoch 244 | Loss 1.117195 | 
+Epoch 245 | Loss 1.181802 | 
+Epoch 246 | Loss 1.160646 | 
+Epoch 247 | Loss 1.151400 | 
+Epoch 248 | Loss 1.139620 | 
+Epoch 249 | Loss 1.177522 | 
+Epoch 250 | Loss 1.144745 | 100 Val Acc = 45.60% +- 4.51%
+Epoch 251 | Loss 1.168431 | 
+Epoch 252 | Loss 1.175380 | 
+Epoch 253 | Loss 1.175486 | 
+Epoch 254 | Loss 1.132706 | 
+Epoch 255 | Loss 1.170088 | 
+Epoch 256 | Loss 1.165041 | 
+Epoch 257 | Loss 1.106306 | 
+Epoch 258 | Loss 1.179448 | 
+Epoch 259 | Loss 1.162885 | 
+Epoch 260 | Loss 1.120925 | 100 Val Acc = 42.60% +- 3.75%
+Epoch 261 | Loss 1.146847 | 
+Epoch 262 | Loss 1.180597 | 
+Epoch 263 | Loss 1.155661 | 
+Epoch 264 | Loss 1.111724 | 
+Epoch 265 | Loss 1.150671 | 
+Epoch 266 | Loss 1.183087 | 
+Epoch 267 | Loss 1.117203 | 
+Epoch 268 | Loss 1.143539 | 
+Epoch 269 | Loss 1.226456 | 
+Epoch 270 | Loss 1.204830 | 100 Val Acc = 48.20% +- 4.64%
+best model! save...
+Epoch 271 | Loss 1.103677 | 
+Epoch 272 | Loss 1.179511 | 
+Epoch 273 | Loss 1.162591 | 
+Epoch 274 | Loss 1.098071 | 
+Epoch 275 | Loss 1.092604 | 
+Epoch 276 | Loss 1.158039 | 
+Epoch 277 | Loss 1.165618 | 
+Epoch 278 | Loss 1.184714 | 
+Epoch 279 | Loss 1.097192 | 
+Epoch 280 | Loss 1.130710 | 100 Val Acc = 41.60% +- 3.75%
+Epoch 281 | Loss 1.185099 | 
+Epoch 282 | Loss 1.154292 | 
+Epoch 283 | Loss 1.199909 | 
+Epoch 284 | Loss 1.115443 | 
+Epoch 285 | Loss 1.216796 | 
+Epoch 286 | Loss 1.098325 | 
+Epoch 287 | Loss 1.120540 | 
+Epoch 288 | Loss 1.129531 | 
+Epoch 289 | Loss 1.138255 | 
+Epoch 290 | Loss 1.103773 | 100 Val Acc = 44.80% +- 4.19%
+Epoch 291 | Loss 1.176733 | 
+Epoch 292 | Loss 1.134789 | 
+Epoch 293 | Loss 1.084624 | 
+Epoch 294 | Loss 1.116321 | 
+Epoch 295 | Loss 1.119502 | 
+Epoch 296 | Loss 1.114963 | 
+Epoch 297 | Loss 1.130537 | 
+Epoch 298 | Loss 1.121577 | 
+Epoch 299 | Loss 1.118021 | 
+Epoch 300 | Loss 1.117419 | 100 Val Acc = 44.20% +- 4.30%
+Epoch 301 | Loss 1.114404 | 
+Epoch 302 | Loss 1.082754 | 
+Epoch 303 | Loss 1.094612 | 
+Epoch 304 | Loss 1.159981 | 
+Epoch 305 | Loss 1.076282 | 
+Epoch 306 | Loss 1.107103 | 
+Epoch 307 | Loss 1.109741 | 
+Epoch 308 | Loss 1.085165 | 
+Epoch 309 | Loss 1.127183 | 
+Epoch 310 | Loss 1.137335 | 100 Val Acc = 44.00% +- 4.33%
+Epoch 311 | Loss 1.154203 | 
+Epoch 312 | Loss 1.109262 | 
+Epoch 313 | Loss 1.127738 | 
+Epoch 314 | Loss 1.206348 | 
+Epoch 315 | Loss 1.115997 | 
+Epoch 316 | Loss 1.161951 | 
+Epoch 317 | Loss 1.192642 | 
+Epoch 318 | Loss 1.219610 | 
+Epoch 319 | Loss 1.116699 | 
+Epoch 320 | Loss 1.129715 | 100 Val Acc = 43.20% +- 3.99%
+Epoch 321 | Loss 1.114643 | 
+Epoch 322 | Loss 1.096281 | 
+Epoch 323 | Loss 1.092231 | 
+Epoch 324 | Loss 1.100627 | 
+Epoch 325 | Loss 1.140798 | 
+Epoch 326 | Loss 1.122590 | 
+Epoch 327 | Loss 1.118386 | 
+Epoch 328 | Loss 1.135961 | 
+Epoch 329 | Loss 1.118446 | 
+Epoch 330 | Loss 1.088023 | 100 Val Acc = 43.40% +- 3.68%
+Epoch 331 | Loss 1.025016 | 
+Epoch 332 | Loss 1.129472 | 
+Epoch 333 | Loss 1.128649 | 
+Epoch 334 | Loss 1.155769 | 
+Epoch 335 | Loss 1.108332 | 
+Epoch 336 | Loss 1.097932 | 
+Epoch 337 | Loss 1.120236 | 
+Epoch 338 | Loss 1.136436 | 
+Epoch 339 | Loss 1.055247 | 
+Epoch 340 | Loss 1.071688 | 100 Val Acc = 47.00% +- 3.90%
+Epoch 341 | Loss 1.094854 | 
+Epoch 342 | Loss 1.105017 | 
+Epoch 343 | Loss 1.148682 | 
+Epoch 344 | Loss 1.107612 | 
+Epoch 345 | Loss 1.116733 | 
+Epoch 346 | Loss 1.127131 | 
+Epoch 347 | Loss 1.120297 | 
+Epoch 348 | Loss 1.137593 | 
+Epoch 349 | Loss 1.116578 | 
+Epoch 350 | Loss 1.109454 | 100 Val Acc = 44.20% +- 4.75%
+Epoch 351 | Loss 1.088807 | 
+Epoch 352 | Loss 1.100228 | 
+Epoch 353 | Loss 1.143618 | 
+Epoch 354 | Loss 1.095670 | 
+Epoch 355 | Loss 1.127472 | 
+Epoch 356 | Loss 1.131464 | 
+Epoch 357 | Loss 1.143986 | 
+Epoch 358 | Loss 1.107357 | 
+Epoch 359 | Loss 1.056120 | 
+Epoch 360 | Loss 1.104226 | 100 Val Acc = 41.40% +- 4.16%
+Epoch 361 | Loss 1.121952 | 
+Epoch 362 | Loss 1.155150 | 
+Epoch 363 | Loss 1.150342 | 
+Epoch 364 | Loss 1.067092 | 
+Epoch 365 | Loss 1.101167 | 
+Epoch 366 | Loss 1.077963 | 
+Epoch 367 | Loss 1.035446 | 
+Epoch 368 | Loss 1.085353 | 
+Epoch 369 | Loss 1.130722 | 
+Epoch 370 | Loss 1.090814 | 100 Val Acc = 43.00% +- 3.93%
+Epoch 371 | Loss 1.059584 | 
+Epoch 372 | Loss 1.113794 | 
+Epoch 373 | Loss 1.099274 | 
+Epoch 374 | Loss 1.057444 | 
+Epoch 375 | Loss 1.070421 | 
+Epoch 376 | Loss 1.112444 | 
+Epoch 377 | Loss 1.072218 | 
+Epoch 378 | Loss 1.084182 | 
+Epoch 379 | Loss 1.129797 | 
+Epoch 380 | Loss 1.039974 | 100 Val Acc = 44.40% +- 3.74%
+Epoch 381 | Loss 1.103412 | 
+Epoch 382 | Loss 1.100560 | 
+Epoch 383 | Loss 1.084795 | 
+Epoch 384 | Loss 1.164757 | 
+Epoch 385 | Loss 1.104181 | 
+Epoch 386 | Loss 1.064618 | 
+Epoch 387 | Loss 1.059562 | 
+Epoch 388 | Loss 1.144555 | 
+Epoch 389 | Loss 1.155817 | 
+Epoch 390 | Loss 1.097551 | 100 Val Acc = 45.40% +- 4.03%
+Epoch 391 | Loss 1.085583 | 
+Epoch 392 | Loss 1.040510 | 
+Epoch 393 | Loss 1.047039 | 
+Epoch 394 | Loss 1.081551 | 
+Epoch 395 | Loss 1.145690 | 
+Epoch 396 | Loss 1.094623 | 
+Epoch 397 | Loss 1.070764 | 
+Epoch 398 | Loss 1.111985 | 
+Epoch 399 | Loss 1.095118 | 
+
+
+###############################################################################
+Peregrine Cluster
+Job 28317834 for user 's4284917'
+Finished at: Mon Jan 23 09:14:25 CET 2023
+
+Job details:
+============
+
+Job ID              : 28317834
+Name                : otamTrainTemporalShuffle.sh
+User                : s4284917
+Partition           : gpu
+Nodes               : pg-gpu04
+Number of Nodes     : 1
+Cores               : 12
+Number of Tasks     : 1
+State               : COMPLETED
+Submit              : 2023-01-22T14:07:18
+Start               : 2023-01-22T14:07:23
+End                 : 2023-01-23T09:14:25
+Reserved walltime   : 1-06:00:00
+Used walltime       :   19:07:02
+Used CPU time       : 2-07:12:16 (efficiency: 24.06%)
+% User (Computation): 60.77%
+% System (I/O)      : 39.23%
+Mem reserved        : 2000M
+Max Mem (Node/step) : 5.70G (pg-gpu04, per node)
+Full Max Mem usage  : 5.70G
+Total Disk Read     : 2.56M
+Total Disk Write    : 134.04K
+Average GPU usage   : 95.7% (pg-gpu04)
+
+
+Acknowledgements:
+=================
+
+Please see this page for information about acknowledging Peregrine in your publications:
+
+https://wiki.hpc.rug.nl/peregrine/introduction/scientific_output
+
+################################################################################

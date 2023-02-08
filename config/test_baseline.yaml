@@ -1,0 +1,18 @@
+work_dir: /home/s4284917/FSL-Video
+data_dir: /data/pg-IntSys_Guo/Datasets/FSL_video/smsm-annotations
+
+model: ResNet50_pretrained
+method: support
+# method: baseline
+test_n_way: 5
+n_shot: 1
+split: 'test'
+
+iter_num: 10000
+batch_size: 8
+num_segments: 8
+base_classes: 64
+n_query: 1
+checkpoint: /home/s4284917/checkpoints/base/somethingv2_RGB_resnet50_avg_segment8_e50
+append_classifier: False
+tam: False
