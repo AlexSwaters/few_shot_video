@@ -1,13 +1,10 @@
 import os
 import yaml
-import backbone
 import torch
-import torch.nn as nn
 import numpy as np
-from save_features import save_features, get_best_file
-from test import BaselineFinetune, model_dict, feature_evaluation, init_loader
-from tsn_loader import SimpleDataManager
-from tqdm import tqdm
+from save_features import save_features
+from test import BaselineFinetune, feature_evaluation, init_loader
+from dataset import SimpleDataManager
 import sys
 
 sys.path.append('/home/s4284917/temporal-adaptive-module/')
@@ -105,10 +102,11 @@ if __name__ == '__main__':
         cl_data_file = init_loader(novel_file)
 
         if params['method'] == 'baseline':
-            model = BaselineFinetune(model_dict[params['model']], final_feat_dim=final_feat_dim, **few_shot_params)
+            model = BaselineFinetune(final_feat_dim=final_feat_dim, **few_shot_params)
         elif params['method'] == 'support':
-            model = BaselineFinetune(model_dict[params['model']], base_class=base_class, loss_type='support',
-                                     final_feat_dim=final_feat_dim, **few_shot_params)
+            model = BaselineFinetune(loss_type='support', final_feat_dim=final_feat_dim, **few_shot_params)
+        else:
+            raise ValueError("Unknown loss type")
 
         model = model.cuda()
 
