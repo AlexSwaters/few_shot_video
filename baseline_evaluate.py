@@ -2,13 +2,16 @@ import os
 import yaml
 import torch
 import numpy as np
-from save_features import save_features
-from test import BaselineFinetune, feature_evaluation, init_loader
-from dataset import SimpleDataManager
+from baseline_plus.save_features import save_features
+from baseline_plus.test import BaselineFinetune, feature_evaluation, gen_cl_file
 import sys
+
+from dataset import SimpleDataManager
 
 sys.path.append('/home/s4284917/temporal-adaptive-module/')
 from ops.models import TSN
+
+IMAGE_SIZE = 224
 
 
 class Identity(torch.nn.Module):
@@ -17,28 +20,23 @@ class Identity(torch.nn.Module):
 
 
 if __name__ == '__main__':
-    config = '/home/s4284917/FSL-Video/config/test_baseline.yaml'
-
+    config = '/home/s4284917/FSL-Video/baseline_config/test_baseline.yaml'
     with open(config, 'r') as f:
         params = yaml.load(f, Loader=yaml.FullLoader)
-
     assert params['method'] in ['support', 'baseline']
     iter_num = params['iter_num']
-    few_shot_params = dict(n_way=params['test_n_way'], n_support=params['n_shot'])
     split = params['split']
     batch_size = params['batch_size']
     num_segments = params['num_segments']
     file = os.path.join(params['data_dir'], '{}.txt'.format(split))
+
     print(file)
+    dropout = 0.0
     if params['method'] == 'support':
         dropout = 0.5
-    elif params['method'] == 'baseline':
-        dropout = 0.0
 
     checkpoint_dir = params['checkpoint']
-    split = params['split']
-    split_str = split
-    novel_file = os.path.join(checkpoint_dir.replace("checkpoints", "features"), split_str + ".hdf5")
+    novel_file = os.path.join(checkpoint_dir.replace("checkpoints", "features"), split + ".hdf5")
     outfile = novel_file
 
     print_once = True
@@ -56,13 +54,19 @@ if __name__ == '__main__':
 
         # load model
         base_class = params['base_classes']
-        model = TSN(params['base_classes'], 8, 'RGB', 'resnet50', tam=params['tam'], print_spec=print_once,
-                    dropout=dropout)
+        model = TSN(
+            params['base_classes'],
+            8,
+            'RGB',
+            'resnet50',
+            tam=params['tam'],
+            print_spec=print_once,
+            dropout=dropout
+        )
         model = model.cuda()
         print_once = False
 
-        image_size = 224
-        datamgr = SimpleDataManager(image_size, batch_size=batch_size, num_segments=num_segments)
+        datamgr = SimpleDataManager(IMAGE_SIZE, batch_size=batch_size, num_segments=num_segments)
         data_loader = datamgr.get_data_loader(data_file=file, aug=False)
 
         checkpoint = torch.load(path, map_location=lambda storage, loc: storage.cuda(0))
@@ -95,12 +99,7 @@ if __name__ == '__main__':
         del model
         torch.cuda.empty_cache()
 
-        # test
-        max_acc_all = []
-        acc_all = []
-        cumulative_acc_all = []
-        cl_data_file = init_loader(novel_file)
-
+        few_shot_params = dict(n_way=params['test_n_way'], n_support=params['n_shot'])
         if params['method'] == 'baseline':
             model = BaselineFinetune(final_feat_dim=final_feat_dim, **few_shot_params)
         elif params['method'] == 'support':
@@ -109,11 +108,11 @@ if __name__ == '__main__':
             raise ValueError("Unknown loss type")
 
         model = model.cuda()
-
+        acc_all = []
+        cl_data_file = gen_cl_file(novel_file)
         for i in range(iter_num):
-            acc = feature_evaluation(cl_data_file, model, n_query=params['n_query'], adaptation=True, **few_shot_params)
+            acc = feature_evaluation(cl_data_file, model, n_query=params['n_query'], **few_shot_params)
             acc_all.append(acc)
-
         acc_all = np.asarray(acc_all)
         acc_mean = np.mean(acc_all)
         acc_std = np.std(acc_all)

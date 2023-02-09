@@ -20,7 +20,6 @@ class SimpleHDF5Dataset:
             self.all_feats_dset = self.f['all_feats'][...]
             self.all_labels = self.f['all_labels'][...]
             self.total = self.f['count'][0]
-        # print('here')
 
     def __getitem__(self, i):
         return torch.Tensor(self.all_feats_dset[i, :]), int(self.all_labels[i])
@@ -29,7 +28,10 @@ class SimpleHDF5Dataset:
         return self.total
 
 
-def init_loader(filename):
+def gen_cl_file(filename):
+    """
+    Produce class label data file which is needed later for evaluation
+    """
     with h5py.File(filename, 'r') as f:
         fileset = SimpleHDF5Dataset(f)
 
@@ -71,11 +73,17 @@ class MetaTemplate(nn.Module):
     def forward(self, x):
         pass
 
-    @abstractmethod
-    def set_forward_adaptation(self, x):
-        pass
-
     def parse_feature(self, x):
+        """
+        Convert features to support and query sets
+
+        Args:
+            x (torch.Tensor): features
+
+        Returns:
+            z_support (torch.Tensor): support features
+            z_query (torch.Tensor): query features
+        """
         z_all = Variable(x.cuda())
         z_support = z_all[:, :self.n_support]
         z_query = z_all[:, self.n_support:]
@@ -83,6 +91,10 @@ class MetaTemplate(nn.Module):
 
     @abstractmethod
     def set_forward_adaptation(self, x):
+        """
+        Adapt the TSN by appending a linear classifier and fine-tuning it. Produce scores
+        and accuracy for queries
+        """
         z_support, z_query = self.parse_feature(x)
         z_support = z_support.contiguous().view(self.n_way * self.n_support, -1)
         z_query = z_query.contiguous().view(self.n_way * self.n_query, -1)
@@ -103,7 +115,7 @@ class MetaTemplate(nn.Module):
 
         batch_size = 4
         support_size = self.n_way * self.n_support
-        for epoch in range(100):
+        for _ in range(100):
             rand_id = np.random.permutation(support_size)
             for i in range(0, support_size, batch_size):
                 set_optimizer.zero_grad()
@@ -120,6 +132,9 @@ class MetaTemplate(nn.Module):
 
 
 class BaselineFinetune(MetaTemplate):
+    """
+    Wrapper for fine-tuning the TSN from TAM to the few-shot context
+    """
     def __init__(self, n_way, n_support, loss_type="softmax", final_feat_dim=2048):
         super(BaselineFinetune, self).__init__(n_way, n_support)
         self.loss_type = loss_type
@@ -132,6 +147,9 @@ class BaselineFinetune(MetaTemplate):
         return self.set_forward_adaptation(x, is_feature)
 
     def __get_linear_clf(self, z_support):
+        """
+        Get the linear classifier that will be attached to the end of the model
+        """
         linear_clf = nn.Linear(self.feat_dim, self.n_way)
         if self.loss_type == 'support':
             linear_clf = nn.Linear(self.feat_dim, self.n_way)
@@ -151,6 +169,10 @@ class BaselineFinetune(MetaTemplate):
         return linear_clf.cuda()
 
     def set_forward_adaptation(self, x, temporal_aug=False):
+        """
+        Adapt the TSN by appending a linear classifier and fine-tuning it. Produce scores
+        and accuracy for queries. This overrides the default implementation in MetaTemplate.
+        """
         z_support, z_query = self.parse_feature(x)
         t = x.shape[-2] if temporal_aug else 1
         z_support = z_support.contiguous().view(self.n_way * self.n_support * t, -1)
@@ -175,7 +197,7 @@ class BaselineFinetune(MetaTemplate):
         else:
             support_size = self.n_way * self.n_support
 
-        for epoch in range(100):
+        for _ in range(100):
             rand_id = np.random.permutation(support_size)
             for i in range(0, support_size, batch_size):
                 set_optimizer.zero_grad()
@@ -202,6 +224,10 @@ class BaselineFinetune(MetaTemplate):
 
 
 def feature_evaluation(cl_data_file, model, n_way=5, n_support=5, n_query=1, temporal_aug=False):
+    """
+    Evaluate the features produced by the model and return the accuracy (predicting which class queries
+    correspond to)
+    """
     class_list = cl_data_file.keys()
     select_class = random.sample(class_list, n_way)
     z_all = []
@@ -211,5 +237,5 @@ def feature_evaluation(cl_data_file, model, n_way=5, n_support=5, n_query=1, tem
         z_all.append([np.squeeze(img_feat[perm_ids[i]]) for i in range(n_support + n_query)])  # stack each batch
     z_all = torch.from_numpy(np.array(z_all))
     model.n_query = n_query
-    scores, acc = model.set_forward_adaptation(z_all, is_feature=True, temporal_aug=temporal_aug)
+    _, acc = model.set_forward_adaptation(z_all, temporal_aug=temporal_aug)
     return acc

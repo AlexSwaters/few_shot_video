@@ -52,9 +52,9 @@ class VideoDataset:
             random_select=False,
             num_segments=None
     ):
+        self.cl = cl
         if data_file is None:
             self.meta = sub_meta
-            self.cl = cl
         else:
             self.meta = [x.strip().split(' ') for x in open(data_file)]
         self.transform = transform
@@ -90,7 +90,7 @@ class VideoDataset:
             sequence of snippets from a video
         """
         full_path = self.meta[i][0]
-        num_frames = self.meta[i][1]
+        num_frames = int(self.meta[i][1])
         num_segments = self.num_segments
         if self.random_select and num_frames > 8:  # random sample
             average_duration = num_frames // num_segments

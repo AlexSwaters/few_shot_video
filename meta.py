@@ -7,9 +7,9 @@ import torch.optim
 from torch.autograd import Variable
 
 from dataset import SetDataManager
-from meta_template import BaseNet
-from scores import compute_otam_scores, compute_proto_scores
-from utils import parse_args, get_model
+from meta.meta_template import BaseNet
+from meta.scores import compute_otam_scores, compute_proto_scores
+from meta.utils import parse_args, get_model
 
 IMAGE_SIZE = 224
 
