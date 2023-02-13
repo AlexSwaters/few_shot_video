@@ -107,6 +107,14 @@ def get_model(params: dict, print_tsn_info: bool, ckpt_path: str):
 
 
 def eval_model(params: dict, final_feat_dim: int, novel_file: str):
+    &#34;&#34;&#34;
+    Evaluate the model on the previously saved features.
+
+    Args:
+        params (dict): Parameters with which to evaluate baseline+
+        final_feat_dim (int): The final feature count
+        novel_file (str): hdf5 path to the data
+    &#34;&#34;&#34;
     few_shot_params = dict(n_way=params[&#39;test_n_way&#39;], n_support=params[&#39;n_shot&#39;])
     loss_method = &#39;softmax&#39; if params[&#39;method&#39;] == &#39;baseline&#39; else &#39;support&#39;
     model = BaselineFinetune(final_feat_dim=final_feat_dim, loss_type=loss_method, **few_shot_params)
@@ -183,12 +191,29 @@ if __name__ == &#39;__main__&#39;:
 <span>def <span class="ident">eval_model</span></span>(<span>params: dict, final_feat_dim: int, novel_file: str)</span>
 </code></dt>
 <dd>
-<div class="desc"></div>
+<div class="desc"><p>Evaluate the model on the previously saved features.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>params</code></strong> :&ensp;<code>dict</code></dt>
+<dd>Parameters with which to evaluate baseline+</dd>
+<dt><strong><code>final_feat_dim</code></strong> :&ensp;<code>int</code></dt>
+<dd>The final feature count</dd>
+<dt><strong><code>novel_file</code></strong> :&ensp;<code>str</code></dt>
+<dd>hdf5 path to the data</dd>
+</dl></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">def eval_model(params: dict, final_feat_dim: int, novel_file: str):
+    &#34;&#34;&#34;
+    Evaluate the model on the previously saved features.
+
+    Args:
+        params (dict): Parameters with which to evaluate baseline+
+        final_feat_dim (int): The final feature count
+        novel_file (str): hdf5 path to the data
+    &#34;&#34;&#34;
     few_shot_params = dict(n_way=params[&#39;test_n_way&#39;], n_support=params[&#39;n_shot&#39;])
     loss_method = &#39;softmax&#39; if params[&#39;method&#39;] == &#39;baseline&#39; else &#39;support&#39;
     model = BaselineFinetune(final_feat_dim=final_feat_dim, loss_type=loss_method, **few_shot_params)
