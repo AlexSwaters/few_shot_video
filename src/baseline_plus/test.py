@@ -1,3 +1,6 @@
+"""
+Auxiliary code for testing Baseline+
+"""
 import random
 from abc import abstractmethod
 
@@ -9,6 +12,9 @@ from torch.autograd import Variable
 
 
 class SimpleHDF5Dataset:
+    """
+    Basic torch dataset for HDF5 files
+    """
     def __init__(self, file_handle=None):
         if file_handle is None:
             self.f = ''
@@ -28,9 +34,15 @@ class SimpleHDF5Dataset:
         return self.total
 
 
-def gen_cl_file(filename):
+def gen_cl_file(filename: str):
     """
     Produce class label data file which is needed later for evaluation
+
+    Args:
+        filename (str): path to the HDF5 file
+
+    Returns:
+        dict: class label data file
     """
     with h5py.File(filename, 'r') as f:
         fileset = SimpleHDF5Dataset(f)
@@ -54,6 +66,9 @@ def gen_cl_file(filename):
 
 
 class MetaTemplate(nn.Module):
+    """
+    Template for Baseline+ adaptation
+    """
     def __init__(self, n_way, n_support, change_way=True):
         super(MetaTemplate, self).__init__()
         self.n_way = n_way
@@ -219,7 +234,7 @@ class BaselineFinetune(MetaTemplate):
         acc = np.mean(pred == y) * 100
         return scores, acc
 
-    def set_forward_loss(self, x):
+    def set_forward_loss(self, _):
         raise ValueError('Baseline predict on pretrained feature and do not support finetune backbone')
 
 

@@ -1,3 +1,6 @@
+"""
+This file defines the basic template for the meta-methods
+"""
 import numpy as np
 import torch.nn as nn
 from torch.autograd import Variable

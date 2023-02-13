@@ -1,3 +1,6 @@
+"""
+This file is responsible for parsing arguments and getting the model.
+"""
 import argparse
 
 import torch.nn as nn

@@ -1,3 +1,6 @@
+"""
+This file produces similarity scores for each of the meta-methods
+"""
 import numpy as np
 import torch
 import torch.nn.functional as F

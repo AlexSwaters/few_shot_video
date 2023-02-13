@@ -1,3 +1,6 @@
+"""
+This file trains and tests meta-learning methods.
+"""
 import os
 
 import numpy as np

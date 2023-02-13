@@ -1,3 +1,6 @@
+"""
+This file defines classes for feeding data to the model.
+"""
 import cv2
 import numpy as np
 import torch
@@ -42,6 +45,10 @@ def extract_frames(video_path, interval=1):
 
 
 class VideoDataset:
+    """
+    A dataset for loading videos. Loads directly from the video files, and 
+    does not require pre-extraction of frames.
+    """
     def __init__(
             self,
             sub_meta=None,
@@ -207,7 +214,6 @@ class SetDataset:
     """
     Dataset for an episode
     """
-
     def __init__(self, data_file, batch_size, transform, random_select=False, num_segments=None):
         self.video_list = [x.strip().split(' ') for x in open(data_file)]
         self.cl_list = np.zeros(len(self.video_list), dtype=int)
@@ -225,6 +231,7 @@ class SetDataset:
             label = int(self.video_list[x][2])
             self.sub_meta[label].append([root_path, num_frames])
 
+        # Create sub-dataloaders. When retrieving from this dataset, the index refers to the sub-dataloader
         self.sub_dataloader = []
         sub_data_loader_params = dict(
             batch_size=batch_size,
@@ -254,7 +261,6 @@ class EpisodicBatchSampler(object):
     """
     Defines what can be sampled in an episode
     """
-
     def __init__(self, n_classes, n_way, n_episodes):
         self.n_classes = n_classes
         self.n_way = n_way
@@ -272,7 +278,6 @@ class ImageJitter(object):
     """
     Randomly jitter the image, improve generalization
     """
-
     def __init__(self, transform_dict):
         self.transforms = [(transform_type_dict[k], transform_dict[k]) for k in transform_dict]
 
@@ -286,6 +291,18 @@ class ImageJitter(object):
 
 
 def to_tensor(data):
+    """
+    Convert data to tensor
+
+    Args:
+        data (any): data to be converted
+
+    Raises:
+        TypeError: if data type is not supported
+
+    Returns:
+        torch.Tensor: converted data
+    """
     if isinstance(data, torch.Tensor):
         return data
     elif isinstance(data, np.ndarray):
@@ -300,6 +317,9 @@ def to_tensor(data):
 
 
 class SimpleDataManager:
+    """
+    Responsible for getting a data loader for Baseline+
+    """
     def __init__(self, image_size, batch_size, num_segments=None):
         super(SimpleDataManager, self).__init__()
         self.batch_size = batch_size

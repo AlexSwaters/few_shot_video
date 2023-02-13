@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>src.meta.scores API documentation</title>
+<meta name="description" content="This file produces similarity scores for each of the meta-methods" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>src.meta.scores</code></h1>
+</header>
+<section id="section-intro">
+<p>This file produces similarity scores for each of the meta-methods</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+This file produces similarity scores for each of the meta-methods
+&#34;&#34;&#34;
+import numpy as np
+import torch
+import torch.nn.functional as F
+from numba import jit
+from scipy.spatial.distance import cdist
+import random
+
+
+def shuffle_order(logits: torch.Tensor, shuffle_strength: float = 1):
+    &#34;&#34;&#34;
+    Shuffle the temporal order of the logits
+    
+    Args:
+        logits: (nway, sq, t, d)
+        shuffle_strength: float, the strength of the shuffle. It&#39;s multiplied 
+        times the number of frames to get the maximal sum of positional movement.
+        A positioinal movement of 1 means that the logits of a frame can be
+        moved to the left or right by 1 frame.
+    
+    Returns:
+        shuffled_logits: (nway, sq, t, d)
+    &#34;&#34;&#34;
+    t = logits.shape[2]
+    shuffle_strength = shuffle_strength * t  # maximal sum of positional movement
+    shuffle_strength = random.randint(0, shuffle_strength + 1)
+    swaps = []
+    while shuffle_strength &gt; 0:
+        swap = torch.randint(0, t, (2,)).tolist()
+        if swap not in swaps:
+            swaps.append(swap)
+            shuffle_strength -= abs(swap[0] - swap[1])
+    for swap in swaps:
+        temp = logits[:, :, swap[0]].clone()
+        logits[:, :, swap[0]] = logits[:, :, swap[1]]
+        logits[:, :, swap[1]] = temp
+    return logits
+
+
+def compute_all_pairs_weight(z_support, z_query, t):
+    &#34;&#34;&#34;
+    Compute the all pairs weight for the OTAM score using cosine similarity.
+    
+    Args:
+        z_support: (t, d)
+        z_query: (t, d)
+        t: int, number of frames
+    
+    Returns:
+        all_pairs_weight: float, the all pairs weight
+    &#34;&#34;&#34;
+    all_pairs_weight = 0
+    for i in range(t):
+        for j in range(t): # cdist
+            pair_dist = np.dot(z_support[i], z_query[j])
+            pair_dist /= np.linalg.norm(z_support[i]) * np.linalg.norm(z_query[j])
+            all_pairs_weight += pair_dist
+    all_pairs_weight /= t * t
+    return all_pairs_weight
+
+
+def compute_otam_scores(
+        nway:int, 
+        n_query:int, 
+        n_support:int, 
+        logits:torch.Tensor, 
+        t:int, 
+        sq:int, 
+        use_shuffle=False,
+        all_pairs_weight=0
+    ):
+    &#34;&#34;&#34;
+    Compute the OTAM scores for the given logits.
+
+    Args:
+        nway (int): number of support classes
+        n_query (int): the number of queries
+        n_support (int): the number of support examples per class
+        logits (torch.Tensor): the logits
+        t (int): the number of segments (or the length of the series of embeddings)
+        sq (int): support + query
+        use_shuffle (bool, optional): Whether to use shuffle augmentation. Defaults to False.
+        all_pairs_weight (int, optional): Contribution of all pairs weight to loss. Defaults to 0.
+
+    Returns:
+        torch.Tensor: the scores
+    &#34;&#34;&#34;
+    logits = logits.reshape(nway, sq, t, logits.shape[-1])  # 5x2x8x2048
+    if (use_shuffle):
+        logits = shuffle_order(logits)
+    z_support = logits[:, :n_support].reshape(nway * n_support, t, -1)  # 10x8x2048
+    z_query = logits[:, n_support:].reshape(nway * n_query, t, -1)  # 10x8x2048
+
+    scores = torch.zeros((nway * n_query, nway * n_support), requires_grad=True).cuda()
+    for qi in range(nway * n_query):  # query i
+        for si in range(nway * n_support):  # support i
+            x = z_support[si].cpu().detach().numpy()
+            y = z_query[qi].cpu().detach().numpy()
+            
+            scores[qi][si] = 0
+            if all_pairs_weight &gt; 0:
+                scores[qi][si] += compute_all_pairs_weight(x, y, t) * all_pairs_weight
+
+            _, path = dtw(x, y)
+            start = np.where(path[0] == 1)[0][0]
+            x_index = path[0][start:start + t] - 1  # subtract the extra coordinates
+            y_index = path[1][start:start + t]
+            scores[qi][si] += F.cosine_similarity(z_support[si][x_index], z_query[qi][y_index]).sum()
+
+            _, path = dtw(y, x)
+            start = np.where(path[0] == 1)[0][0]
+            x_index = path[0][start:start + t] - 1  # subtract the extra coordinates
+            y_index = path[1][start:start + t]
+            scores[qi][si] += F.cosine_similarity(z_support[si][y_index], z_query[qi][x_index]).sum()
+    return scores.reshape(nway * n_query, nway, n_support).mean(2)  # 5x5
+
+
+def compute_proto_scores(logits:torch.tensor, nway:int, sq:int, t:int, n_support:int, n_query:int):
+    &#34;&#34;&#34;
+    Compute the proto scores for the given logits.
+
+    Args:
+        logits (torch.tensor): the logits produced by the model
+        nway (int): the number of support classes
+        sq (int): support + query
+        t (int): the number of segments (or the length of the series of embeddings)
+        n_support (int): the number of support examples per class
+        n_query (int): the number of queries
+
+    Returns:
+        torch.tensor: the scores
+    &#34;&#34;&#34;
+    logits = logits.reshape(nway, sq, t, -1)  # 5 x 2 x 8 x 2048
+    logits = logits.mean(2)  # average
+
+    z_support = logits[:, :n_support]
+    z_query = logits[:, n_support:]
+
+    z_proto = z_support.reshape(nway, n_support, -1).mean(1)  # the shape of z is [n_data, n_dim]
+    z_query = z_query.reshape(nway * n_query, -1)
+    dists = euclidean_dist(z_query, z_proto)
+    return -dists
+
+
+def euclidean_dist(x:torch.Tensor, y:torch.Tensor, normalize:bool=False):
+    &#34;&#34;&#34;
+    Compute the euclidean distance between two tensors.
+
+    Args:
+        x (torch.Tensor): the first tensor
+        y (torch.Tensor): the second tensor
+        normalize (bool, optional): Whether to normalize the tensors. Defaults to False.
+
+    Returns:
+        torch.Tensor: the distance
+    &#34;&#34;&#34;
+    if normalize:
+        x = F.normalize(x, p=2, dim=-1)
+        y = F.normalize(y, p=2, dim=-1)
+    n = x.size(0)
+    m = y.size(0)
+    d = x.size(1)
+    assert d == y.size(1)
+
+    x = x.unsqueeze(1).expand(n, m, d)
+    y = y.unsqueeze(0).expand(n, m, d)
+
+    return torch.pow(x - y, 2).sum(2)
+
+
+def dtw(x: np.ndarray, y: np.ndarray):
+    &#34;&#34;&#34;
+    Compute the dynamic time warping distance between two sequences.
+
+    Args:
+        x (np.array): the first sequence
+        y (np.array): the second sequence
+
+    Returns:
+        float: the distance
+        tuple: the path
+    &#34;&#34;&#34;
+    r, c = len(x), len(y)
+    r = r + 2
+    D0 = np.zeros((r + 1, c + 1))
+    D0[0, 1:] = np.inf
+    D0[1:, 0] = np.inf
+    D1 = D0[1:, 1:]  # view
+    D1[1:r - 1, 0:c] = cdist(x, y, &#39;cosine&#39;)
+    D0, D1 = dtw_loop(r, c, D0, D1)
+    if len(x) == 1:
+        path = np.zeros(len(y)), range(len(y))
+    elif len(y) == 1:
+        path = range(len(x)), np.zeros(len(x))
+    else:
+        path = _traceback(D0)
+    return D1[-1, -1], path
+
+
+@jit(nopython=True)
+def dtw_loop(r, c, D0, D1):
+    &#34;&#34;&#34;
+    Auxiliary function for the dynamic time warping distance.
+
+    Args:
+        r (int): rows (the length of the first sequence)
+        c (int): columns (the length of the second sequence)
+        D0 (np.array): the first distance matrix
+        D1 (np.array): the second distance matrix
+
+    Returns:
+        np.array: the first distance matrix
+        np.array: the second distance matrix
+    &#34;&#34;&#34;
+    for i in range(r):  # [0,T+1]
+        for j in range(c):  # [0,T-1]
+            i_k = min(i + 1, r)
+            j_k = min(j + 1, c)
+            if i == 0 or i == r - 1:  # first and last
+                min_list = [D0[i, j], D0[i_k, j], D0[i, j_k]]
+            else:
+                min_list = [D0[i, j], D0[i, j_k]]
+            D1[i, j] += min(min_list)
+    return D0, D1
+
+
+def _traceback(D):
+    &#34;&#34;&#34;
+    Traceback the path.
+
+    Args:
+        D (np.array): the distance matrix
+
+    Returns:
+        tuple: the path
+    &#34;&#34;&#34;
+    i, j = np.array(D.shape) - 2
+    p, q = [i], [j]
+    while (i &gt; 0) or (j &gt; 0):
+        tb = np.argmin((D[i, j], D[i, j + 1], D[i + 1, j]))
+        if tb == 0:
+            i -= 1
+            j -= 1
+        elif tb == 1:
+            i -= 1
+        else:  # (tb == 2):
+            j -= 1
+        p.insert(0, i)
+        q.insert(0, j)
+    return np.array(p), np.array(q)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="src.meta.scores.compute_all_pairs_weight"><code class="name flex">
+<span>def <span class="ident">compute_all_pairs_weight</span></span>(<span>z_support, z_query, t)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Compute the all pairs weight for the OTAM score using cosine similarity.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>z_support</code></strong></dt>
+<dd>(t, d)</dd>
+<dt><strong><code>z_query</code></strong></dt>
+<dd>(t, d)</dd>
+<dt><strong><code>t</code></strong></dt>
+<dd>int, number of frames</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>all_pairs_weight</code></dt>
+<dd>float, the all pairs weight</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_all_pairs_weight(z_support, z_query, t):
+    &#34;&#34;&#34;
+    Compute the all pairs weight for the OTAM score using cosine similarity.
+    
+    Args:
+        z_support: (t, d)
+        z_query: (t, d)
+        t: int, number of frames
+    
+    Returns:
+        all_pairs_weight: float, the all pairs weight
+    &#34;&#34;&#34;
+    all_pairs_weight = 0
+    for i in range(t):
+        for j in range(t): # cdist
+            pair_dist = np.dot(z_support[i], z_query[j])
+            pair_dist /= np.linalg.norm(z_support[i]) * np.linalg.norm(z_query[j])
+            all_pairs_weight += pair_dist
+    all_pairs_weight /= t * t
+    return all_pairs_weight</code></pre>
+</details>
+</dd>
+<dt id="src.meta.scores.compute_otam_scores"><code class="name flex">
+<span>def <span class="ident">compute_otam_scores</span></span>(<span>nway: int, n_query: int, n_support: int, logits: torch.Tensor, t: int, sq: int, use_shuffle=False, all_pairs_weight=0)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Compute the OTAM scores for the given logits.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>nway</code></strong> :&ensp;<code>int</code></dt>
+<dd>number of support classes</dd>
+<dt><strong><code>n_query</code></strong> :&ensp;<code>int</code></dt>
+<dd>the number of queries</dd>
+<dt><strong><code>n_support</code></strong> :&ensp;<code>int</code></dt>
+<dd>the number of support examples per class</dd>
+<dt><strong><code>logits</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>the logits</dd>
+<dt><strong><code>t</code></strong> :&ensp;<code>int</code></dt>
+<dd>the number of segments (or the length of the series of embeddings)</dd>
+<dt><strong><code>sq</code></strong> :&ensp;<code>int</code></dt>
+<dd>support + query</dd>
+<dt><strong><code>use_shuffle</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to use shuffle augmentation. Defaults to False.</dd>
+<dt><strong><code>all_pairs_weight</code></strong> :&ensp;<code>int</code>, optional</dt>
+<dd>Contribution of all pairs weight to loss. Defaults to 0.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>torch.Tensor</code></dt>
+<dd>the scores</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_otam_scores(
+        nway:int, 
+        n_query:int, 
+        n_support:int, 
+        logits:torch.Tensor, 
+        t:int, 
+        sq:int, 
+        use_shuffle=False,
+        all_pairs_weight=0
+    ):
+    &#34;&#34;&#34;
+    Compute the OTAM scores for the given logits.
+
+    Args:
+        nway (int): number of support classes
+        n_query (int): the number of queries
+        n_support (int): the number of support examples per class
+        logits (torch.Tensor): the logits
+        t (int): the number of segments (or the length of the series of embeddings)
+        sq (int): support + query
+        use_shuffle (bool, optional): Whether to use shuffle augmentation. Defaults to False.
+        all_pairs_weight (int, optional): Contribution of all pairs weight to loss. Defaults to 0.
+
+    Returns:
+        torch.Tensor: the scores
+    &#34;&#34;&#34;
+    logits = logits.reshape(nway, sq, t, logits.shape[-1])  # 5x2x8x2048
+    if (use_shuffle):
+        logits = shuffle_order(logits)
+    z_support = logits[:, :n_support].reshape(nway * n_support, t, -1)  # 10x8x2048
+    z_query = logits[:, n_support:].reshape(nway * n_query, t, -1)  # 10x8x2048
+
+    scores = torch.zeros((nway * n_query, nway * n_support), requires_grad=True).cuda()
+    for qi in range(nway * n_query):  # query i
+        for si in range(nway * n_support):  # support i
+            x = z_support[si].cpu().detach().numpy()
+            y = z_query[qi].cpu().detach().numpy()
+            
+            scores[qi][si] = 0
+            if all_pairs_weight &gt; 0:
+                scores[qi][si] += compute_all_pairs_weight(x, y, t) * all_pairs_weight
+
+            _, path = dtw(x, y)
+            start = np.where(path[0] == 1)[0][0]
+            x_index = path[0][start:start + t] - 1  # subtract the extra coordinates
+            y_index = path[1][start:start + t]
+            scores[qi][si] += F.cosine_similarity(z_support[si][x_index], z_query[qi][y_index]).sum()
+
+            _, path = dtw(y, x)
+            start = np.where(path[0] == 1)[0][0]
+            x_index = path[0][start:start + t] - 1  # subtract the extra coordinates
+            y_index = path[1][start:start + t]
+            scores[qi][si] += F.cosine_similarity(z_support[si][y_index], z_query[qi][x_index]).sum()
+    return scores.reshape(nway * n_query, nway, n_support).mean(2)  # 5x5</code></pre>
+</details>
+</dd>
+<dt id="src.meta.scores.compute_proto_scores"><code class="name flex">
+<span>def <span class="ident">compute_proto_scores</span></span>(<span>logits: <built-in method tensor of type object at 0x7f9b9abf5420>, nway: int, sq: int, t: int, n_support: int, n_query: int)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Compute the proto scores for the given logits.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>logits</code></strong> :&ensp;<code>torch.tensor</code></dt>
+<dd>the logits produced by the model</dd>
+<dt><strong><code>nway</code></strong> :&ensp;<code>int</code></dt>
+<dd>the number of support classes</dd>
+<dt><strong><code>sq</code></strong> :&ensp;<code>int</code></dt>
+<dd>support + query</dd>
+<dt><strong><code>t</code></strong> :&ensp;<code>int</code></dt>
+<dd>the number of segments (or the length of the series of embeddings)</dd>
+<dt><strong><code>n_support</code></strong> :&ensp;<code>int</code></dt>
+<dd>the number of support examples per class</dd>
+<dt><strong><code>n_query</code></strong> :&ensp;<code>int</code></dt>
+<dd>the number of queries</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>torch.tensor</code></dt>
+<dd>the scores</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_proto_scores(logits:torch.tensor, nway:int, sq:int, t:int, n_support:int, n_query:int):
+    &#34;&#34;&#34;
+    Compute the proto scores for the given logits.
+
+    Args:
+        logits (torch.tensor): the logits produced by the model
+        nway (int): the number of support classes
+        sq (int): support + query
+        t (int): the number of segments (or the length of the series of embeddings)
+        n_support (int): the number of support examples per class
+        n_query (int): the number of queries
+
+    Returns:
+        torch.tensor: the scores
+    &#34;&#34;&#34;
+    logits = logits.reshape(nway, sq, t, -1)  # 5 x 2 x 8 x 2048
+    logits = logits.mean(2)  # average
+
+    z_support = logits[:, :n_support]
+    z_query = logits[:, n_support:]
+
+    z_proto = z_support.reshape(nway, n_support, -1).mean(1)  # the shape of z is [n_data, n_dim]
+    z_query = z_query.reshape(nway * n_query, -1)
+    dists = euclidean_dist(z_query, z_proto)
+    return -dists</code></pre>
+</details>
+</dd>
+<dt id="src.meta.scores.dtw"><code class="name flex">
+<span>def <span class="ident">dtw</span></span>(<span>x: numpy.ndarray, y: numpy.ndarray)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Compute the dynamic time warping distance between two sequences.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>x</code></strong> :&ensp;<code>np.array</code></dt>
+<dd>the first sequence</dd>
+<dt><strong><code>y</code></strong> :&ensp;<code>np.array</code></dt>
+<dd>the second sequence</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>float</code></dt>
+<dd>the distance</dd>
+<dt><code>tuple</code></dt>
+<dd>the path</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def dtw(x: np.ndarray, y: np.ndarray):
+    &#34;&#34;&#34;
+    Compute the dynamic time warping distance between two sequences.
+
+    Args:
+        x (np.array): the first sequence
+        y (np.array): the second sequence
+
+    Returns:
+        float: the distance
+        tuple: the path
+    &#34;&#34;&#34;
+    r, c = len(x), len(y)
+    r = r + 2
+    D0 = np.zeros((r + 1, c + 1))
+    D0[0, 1:] = np.inf
+    D0[1:, 0] = np.inf
+    D1 = D0[1:, 1:]  # view
+    D1[1:r - 1, 0:c] = cdist(x, y, &#39;cosine&#39;)
+    D0, D1 = dtw_loop(r, c, D0, D1)
+    if len(x) == 1:
+        path = np.zeros(len(y)), range(len(y))
+    elif len(y) == 1:
+        path = range(len(x)), np.zeros(len(x))
+    else:
+        path = _traceback(D0)
+    return D1[-1, -1], path</code></pre>
+</details>
+</dd>
+<dt id="src.meta.scores.dtw_loop"><code class="name flex">
+<span>def <span class="ident">dtw_loop</span></span>(<span>r, c, D0, D1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Auxiliary function for the dynamic time warping distance.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>r</code></strong> :&ensp;<code>int</code></dt>
+<dd>rows (the length of the first sequence)</dd>
+<dt><strong><code>c</code></strong> :&ensp;<code>int</code></dt>
+<dd>columns (the length of the second sequence)</dd>
+<dt><strong><code>D0</code></strong> :&ensp;<code>np.array</code></dt>
+<dd>the first distance matrix</dd>
+<dt><strong><code>D1</code></strong> :&ensp;<code>np.array</code></dt>
+<dd>the second distance matrix</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>np.array</code></dt>
+<dd>the first distance matrix</dd>
+<dt><code>np.array</code></dt>
+<dd>the second distance matrix</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@jit(nopython=True)
+def dtw_loop(r, c, D0, D1):
+    &#34;&#34;&#34;
+    Auxiliary function for the dynamic time warping distance.
+
+    Args:
+        r (int): rows (the length of the first sequence)
+        c (int): columns (the length of the second sequence)
+        D0 (np.array): the first distance matrix
+        D1 (np.array): the second distance matrix
+
+    Returns:
+        np.array: the first distance matrix
+        np.array: the second distance matrix
+    &#34;&#34;&#34;
+    for i in range(r):  # [0,T+1]
+        for j in range(c):  # [0,T-1]
+            i_k = min(i + 1, r)
+            j_k = min(j + 1, c)
+            if i == 0 or i == r - 1:  # first and last
+                min_list = [D0[i, j], D0[i_k, j], D0[i, j_k]]
+            else:
+                min_list = [D0[i, j], D0[i, j_k]]
+            D1[i, j] += min(min_list)
+    return D0, D1</code></pre>
+</details>
+</dd>
+<dt id="src.meta.scores.euclidean_dist"><code class="name flex">
+<span>def <span class="ident">euclidean_dist</span></span>(<span>x: torch.Tensor, y: torch.Tensor, normalize: bool = False)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Compute the euclidean distance between two tensors.</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>x</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>the first tensor</dd>
+<dt><strong><code>y</code></strong> :&ensp;<code>torch.Tensor</code></dt>
+<dd>the second tensor</dd>
+<dt><strong><code>normalize</code></strong> :&ensp;<code>bool</code>, optional</dt>
+<dd>Whether to normalize the tensors. Defaults to False.</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>torch.Tensor</code></dt>
+<dd>the distance</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def euclidean_dist(x:torch.Tensor, y:torch.Tensor, normalize:bool=False):
+    &#34;&#34;&#34;
+    Compute the euclidean distance between two tensors.
+
+    Args:
+        x (torch.Tensor): the first tensor
+        y (torch.Tensor): the second tensor
+        normalize (bool, optional): Whether to normalize the tensors. Defaults to False.
+
+    Returns:
+        torch.Tensor: the distance
+    &#34;&#34;&#34;
+    if normalize:
+        x = F.normalize(x, p=2, dim=-1)
+        y = F.normalize(y, p=2, dim=-1)
+    n = x.size(0)
+    m = y.size(0)
+    d = x.size(1)
+    assert d == y.size(1)
+
+    x = x.unsqueeze(1).expand(n, m, d)
+    y = y.unsqueeze(0).expand(n, m, d)
+
+    return torch.pow(x - y, 2).sum(2)</code></pre>
+</details>
+</dd>
+<dt id="src.meta.scores.shuffle_order"><code class="name flex">
+<span>def <span class="ident">shuffle_order</span></span>(<span>logits: torch.Tensor, shuffle_strength: float = 1)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Shuffle the temporal order of the logits</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>logits</code></strong></dt>
+<dd>(nway, sq, t, d)</dd>
+<dt><strong><code>shuffle_strength</code></strong></dt>
+<dd>float, the strength of the shuffle. It's multiplied </dd>
+</dl>
+<p>times the number of frames to get the maximal sum of positional movement.
+A positioinal movement of 1 means that the logits of a frame can be
+moved to the left or right by 1 frame.</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>shuffled_logits</code></dt>
+<dd>(nway, sq, t, d)</dd>
+</dl></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def shuffle_order(logits: torch.Tensor, shuffle_strength: float = 1):
+    &#34;&#34;&#34;
+    Shuffle the temporal order of the logits
+    
+    Args:
+        logits: (nway, sq, t, d)
+        shuffle_strength: float, the strength of the shuffle. It&#39;s multiplied 
+        times the number of frames to get the maximal sum of positional movement.
+        A positioinal movement of 1 means that the logits of a frame can be
+        moved to the left or right by 1 frame.
+    
+    Returns:
+        shuffled_logits: (nway, sq, t, d)
+    &#34;&#34;&#34;
+    t = logits.shape[2]
+    shuffle_strength = shuffle_strength * t  # maximal sum of positional movement
+    shuffle_strength = random.randint(0, shuffle_strength + 1)
+    swaps = []
+    while shuffle_strength &gt; 0:
+        swap = torch.randint(0, t, (2,)).tolist()
+        if swap not in swaps:
+            swaps.append(swap)
+            shuffle_strength -= abs(swap[0] - swap[1])
+    for swap in swaps:
+        temp = logits[:, :, swap[0]].clone()
+        logits[:, :, swap[0]] = logits[:, :, swap[1]]
+        logits[:, :, swap[1]] = temp
+    return logits</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="src.meta" href="index.html">src.meta</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="src.meta.scores.compute_all_pairs_weight" href="#src.meta.scores.compute_all_pairs_weight">compute_all_pairs_weight</a></code></li>
+<li><code><a title="src.meta.scores.compute_otam_scores" href="#src.meta.scores.compute_otam_scores">compute_otam_scores</a></code></li>
+<li><code><a title="src.meta.scores.compute_proto_scores" href="#src.meta.scores.compute_proto_scores">compute_proto_scores</a></code></li>
+<li><code><a title="src.meta.scores.dtw" href="#src.meta.scores.dtw">dtw</a></code></li>
+<li><code><a title="src.meta.scores.dtw_loop" href="#src.meta.scores.dtw_loop">dtw_loop</a></code></li>
+<li><code><a title="src.meta.scores.euclidean_dist" href="#src.meta.scores.euclidean_dist">euclidean_dist</a></code></li>
+<li><code><a title="src.meta.scores.shuffle_order" href="#src.meta.scores.shuffle_order">shuffle_order</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
