@@ -235,7 +235,7 @@ class BaselineFinetune(MetaTemplate):
         return scores, acc
 
     def set_forward_loss(self, _):
-        raise ValueError('Baseline predict on pretrained feature and do not support finetune backbone')
+        raise ValueError('Baseline predicts on pretrained feature and do not support finetune backbone')
 
 
 def feature_evaluation(cl_data_file, model, n_way=5, n_support=5, n_query=1, temporal_aug=False):
