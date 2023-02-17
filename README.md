@@ -16,7 +16,7 @@ improvements to the OTAM method to combine the success of classifier-based metho
 the success of OTAM relative to meta-baselines by attempting to improve the generalization 
 of OTAM. I find that temporal order shuffling augmentation and all-pair similarity loss 
 contribution do not provide any significant improvement over OTAM and that reducing the 
-number of learnable parameters in the OTAM embedder decreases performance.
+number of learnable parameters in the OTAM embedder decreases performance. See report for exact results.
 
 ## File structure
 ### Docs
