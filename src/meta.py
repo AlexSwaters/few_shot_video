@@ -235,6 +235,8 @@ def main():
     # Determine the checkpoint directory
     params.checkpoint_dir = '%s/checkpoints/%s/%s_%s' % (
         params.work_dir, params.dataset, params.model, params.method)
+    if params.pretrained:
+        params.checkpoint_dir += '_pretrained'
     if params.train_aug:
         params.checkpoint_dir += '_aug'
     params.checkpoint_dir += '_%dway_%dshot' % (params.train_n_way, params.n_shot)

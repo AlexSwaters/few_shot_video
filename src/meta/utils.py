@@ -24,6 +24,8 @@ def get_model(name: str = 'resnet50', pretrained: bool = True, partial_freeze=Fa
         new_model = models.resnet50(pretrained=pretrained)
     elif name == 'ResNet34':
         new_model = models.resnet34(pretrained=pretrained)
+    else:
+        raise ValueError('Unknown model: %s' % (name))
     new_model.fc = nn.Identity()
     new_model.final_feat_dim = 2048 if name == 'resnet50' else 512
     if partial_freeze:
